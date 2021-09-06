@@ -43,10 +43,10 @@ export const SearchParams = () => {
           requestPets();
         }}
       >
-        <label htmlFor="location">
+        <label htmlFor="location" className="search-label">
           Location
           <input
-            className="w-60 my-5"
+            className="search-control"
             id="location"
             value={location}
             placeholder="Location"
@@ -54,10 +54,10 @@ export const SearchParams = () => {
           />
         </label>
 
-        <label htmlFor="animal">
+        <label htmlFor="animal" className="search-label">
           Animal
           <select
-            className="w-60 my-5"
+            className="search-control"
             id="animal"
             value={animal}
             onChange={(e) => setAnimal(e.target.value)}
@@ -72,14 +72,16 @@ export const SearchParams = () => {
           </select>
         </label>
 
-        <label htmlFor="breed">
+        <label htmlFor="breed" className="search-label">
           Breed
           <select
-            className="w-60 my-5"
+            className="search-control "
             id="breed"
             value={breed}
             onChange={(e) => setBreed(e.target.value)}
             onBlur={(e) => setBreed(e.target.value)}
+            disabled={!breedList.length}
+            placeholder="Select a breed"
           >
             <option value=""></option>
             {breedList.map((breed) => (
@@ -90,10 +92,10 @@ export const SearchParams = () => {
           </select>
         </label>
 
-        <label htmlFor="theme">
+        <label htmlFor="theme" className="search-label">
           Theme
           <select
-            className="w-60 my-5"
+            className="search-control"
             value={theme}
             onChange={(e) => setTheme(e.target.value)}
             onBlur={(e) => setTheme(e.target.value)}
@@ -105,7 +107,12 @@ export const SearchParams = () => {
           </select>
         </label>
 
-        <button style={{ backgroundColor: theme }}>Submit</button>
+        <button
+          className="rounded px-6 py-2 text-white hover:opacity-50 border-none"
+          style={{ backgroundColor: theme }}
+        >
+          Submit
+        </button>
       </form>
 
       <Results pets={pets} />

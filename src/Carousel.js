@@ -27,15 +27,22 @@ class Carousel extends Component {
     const { images } = this.props;
 
     return (
-      <div className="carousel">
-        <img src={images[active]} alt="animal" />
-        <div className="carousel-smaller">
+      <div className="flex flex-col md:flex-row">
+        <img
+          src={images[active]}
+          alt="animal"
+          className="md:w-1/2 px-4 lg:w-full "
+        />
+
+        <div className="grid gap-4 grid-cols-5 h-4 p-2">
           {images.map((photo, index) => (
             // eslint-disable-next-line
             <img
               key={photo}
               src={photo}
-              className={index === active ? 'active' : ''}
+              className={` w-25 h-25  rounded-full border-solid 
+                            border-2 border-black 
+                            ${index === active ? 'opacity-70' : ''}`}
               alt="animal thumbnail"
               // data-index, es una prop que enviamos al elemento, puede ser capturado desde e.target.dataset.index
               data-index={index}

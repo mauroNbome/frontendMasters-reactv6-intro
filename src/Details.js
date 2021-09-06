@@ -47,15 +47,16 @@ class Details extends Component {
     // throw new Error('jasfasd');
 
     return (
-      <div className="details">
+      <div>
         <Carousel images={images} />
-        <div>
-          <h1>{name}</h1>
-          <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
+        <div className="p-4 mx-auto text-center mt-28 md:mt-0">
+          <h1 className="text-4xl">{name}</h1>
+          <h2 className="text-1xl italic">{`${animal} - ${breed} - ${city}, ${state}`}</h2>
 
           <ThemeContext.Consumer>
             {([theme]) => (
               <button
+                className="p-3 my-2 text-white rounded-2xl"
                 style={{ backgroundColor: theme }}
                 onClick={this.toggleModal}
               >
@@ -68,7 +69,7 @@ class Details extends Component {
             <Modal>
               <div>
                 <h2>Would you like to adopt {name}?</h2>
-                <div className="buttons">
+                <div>
                   <button onClick={this.adopt}>Yes</button>
                   <button onClick={this.toggleModal}>No</button>
                 </div>
